@@ -3,9 +3,13 @@ local wndw = lib:Window("VIP Turtle Hub V4 - BETA")
 local T1 = wndw:Tab("Main")
 local client = game.Players.LocalPlayer
 
+T1:Slider("Attack cooldown",0,5,1,function(value)
+      _G.cda = value
+end)
+
 T1:Toggle("Auto attack",false,function(value)
    _G.Attack = value
-    while wait() do
+    while wait(_G.cda) do
       if _G.Attack == false then break end
       game:GetService("ReplicatedStorage")["Events"]["AttackEvent"]:FireServer()
     end
@@ -13,7 +17,7 @@ end)
 
 lib:HookCalled(function(self,args)
      if self == "UpdateStatEvent" and args[1] == "giftDailyTimeLeft" then
-      args[2] = 0
+         args[2] = 0
     elseif self == "SetExpTextEvent" and args[1] == client then
          args[2] = 9e9
     end
