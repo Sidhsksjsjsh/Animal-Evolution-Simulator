@@ -3,8 +3,8 @@ local wndw = lib:Window("VIP Turtle Hub V4 - BETA")
 local T1 = wndw:Tab("Main")
 local client = game.Players.LocalPlayer
 
-T1:Slider("Attack cooldown",0,5,1,function(value)
-      _G.cda = value
+T1:Slider("Attack cooldown",0,5,5,function(value)
+      _G.cda = tonumber(value)
 end)
 
 T1:Toggle("Auto attack",false,function(value)
@@ -12,6 +12,15 @@ T1:Toggle("Auto attack",false,function(value)
     while wait(_G.cda) do
       if _G.Attack == false then break end
       game:GetService("ReplicatedStorage")["Events"]["AttackEvent"]:FireServer()
+    end
+end)
+
+T1:Toggle("Auto claim mission",false,function(value)
+   _G.cm = value
+    while wait(_G.cda) do
+      if _G.cm == false then break end
+      game:GetService("ReplicatedStorage")["Events"]["CompletedDailyQuestsEvent"]:FireServer()
+      game:GetService("ReplicatedStorage")["Events"]["DailyQuestsEvent"]:FireServer(true)
     end
 end)
 
