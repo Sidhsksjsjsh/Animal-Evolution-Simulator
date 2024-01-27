@@ -47,12 +47,13 @@ end)
 T1:Button("Rebirth area",function()
       workspace:FindFirstChild("Teleport Gui [FE]5")["ScriptTeleportRebirth"]["RemoteFunction"]:InvokeServer()
       wait(0.5)
-      lib:FireTouch(workspace["RebMeat"])
+      --lib:FireTouch(workspace["RebMeat"])
 end)
 
-T1:Button("Instant collect apples",function()
+--[[T1:Button("Instant collect apples",function()
       lib:FireTouch(workspace["Apple"]["HumanoidRootPart"])
 end)
+]]
 
 T2:Dropdown("Select upgraded",{"DmgLevel","HpLevel"},function(value)
       _G.upgtype = value
