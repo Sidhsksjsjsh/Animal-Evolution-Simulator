@@ -1,5 +1,5 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sidhsksjsjsh/VAPE-UI-MODDED/main/.lua"))()
-local wndw = lib:Window("VIP Turtle Hub V4 - BETA")
+local wndw = lib:Window("VIP Turtle Hub V4 - Cheating Tool")
 local T1 = wndw:Tab("Main")
 local T2 = wndw:Tab("Upgrade")
 local T3 = wndw:Tab("Chest & Item")
@@ -19,7 +19,7 @@ T1:Toggle("Auto attack",false,function(value)
     end
 end)
 
-T1:Toggle("Auto claim mission",false,function(value)
+T1:Toggle("Instant mission",false,function(value)
    _G.cm = value
     while wait() do
       if _G.cm == false then break end
@@ -46,6 +46,12 @@ end)
 
 T1:Button("Rebirth area",function()
       workspace:FindFirstChild("Teleport Gui [FE]5")["ScriptTeleportRebirth"]["RemoteFunction"]:InvokeServer()
+      wait(0.5)
+      lib:FireTouch(workspace["RebMeat"])
+end)
+
+T1:Button("Instant collect apples",function()
+      lib:FireTouch(workspace["Apple"]["HumanoidRootPart"])
 end)
 
 T2:Dropdown("Select upgraded",{"DmgLevel","HpLevel"},function(value)
