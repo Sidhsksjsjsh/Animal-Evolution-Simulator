@@ -46,7 +46,7 @@ end)
 
 T1:Button("Rebirth area",function()
       workspace:FindFirstChild("Teleport Gui [FE]5")["ScriptTeleportRebirth"]["RemoteFunction"]:InvokeServer()
-      wait(0.5)
+      --wait(0.5)
       --lib:FireTouch(workspace["RebMeat"])
 end)
 
