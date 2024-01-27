@@ -3,8 +3,13 @@ local wndw = lib:Window("VIP Turtle Hub V4 - BETA")
 local T1 = wndw:Tab("Main")
 local T2 = wndw:Tab("Upgrade")
 local T3 = wndw:Tab("Chest & Item")
+local T4 = wndw:Tab("Animal Changer")
+
 local workspace = game:GetService("Workspace")
 local client = game.Players.LocalPlayer
+local skinHandler = {}
+
+lib:AddTable(game:GetService("ReplicatedStorage")["AnimalsSkin"],skinHandler)
 
 T1:Slider("Attack cooldown",0,5,5,function(value)
       _G.cda = tonumber(value)
@@ -69,6 +74,14 @@ T3:Toggle("Auto open chest",false,function(value)
       if _G.aoc == false then break end
       game:GetService("ReplicatedStorage")["Events"]["UseItemEvent"]:FireServer(_G.ctype)
     end
+end)
+
+T4:Dropdown("Select animals",skinHandler,function(value)
+      _G.animaltype = value
+end)
+
+T4:Button("Change animal",function()
+   game:GetService("ReplicatedStorage")["Events"]["ChangeRaceEvent"]:FireServer(_G.animaltype)
 end)
 
 --[[lib:HookCalled(function(self,args)
