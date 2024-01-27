@@ -30,7 +30,7 @@ end)
 
 T1:Toggle("Auto upgrade rarity",false,function(value)
    _G.upgrarerity = value
-    while wait(_G.cda) do
+    while wait() do
       if _G.upgrarerity == false then break end
       game:GetService("ReplicatedStorage")["Events"]["UpgradeRarityEvent"]:FireServer()
     end
@@ -38,7 +38,7 @@ end)
 
 T1:Toggle("Auto gold rebirth",false,function(value)
    _G.agr = value
-    while wait(_G.cda) do
+    while wait() do
       if _G.agr == false then break end
       game:GetService("ReplicatedStorage")["Events"]["getGoldenRebEvent"]:FireServer()
     end
