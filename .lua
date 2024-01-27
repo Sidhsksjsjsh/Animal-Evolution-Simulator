@@ -6,7 +6,7 @@ local T3 = wndw:Tab("Chest & Item")
 local workspace = game:GetService("Workspace")
 local client = game.Players.LocalPlayer
 
-T1:Slider("Attack cooldown",0,5,2,function(value)
+T1:Slider("Attack cooldown",0,5,5,function(value)
       _G.cda = tonumber(value)
 end)
 
@@ -20,7 +20,7 @@ end)
 
 T1:Toggle("Auto claim mission",false,function(value)
    _G.cm = value
-    while wait(_G.cda) do
+    while wait() do
       if _G.cm == false then break end
       game:GetService("ReplicatedStorage")["Events"]["CompletedDailyQuestsEvent"]:FireServer()
       game:GetService("ReplicatedStorage")["Events"]["DailyQuestsEvent"]:FireServer(true)
