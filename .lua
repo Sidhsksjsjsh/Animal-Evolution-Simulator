@@ -11,13 +11,9 @@ local skinHandler = {}
 
 lib:AddTable(game:GetService("ReplicatedStorage")["AnimalsSkin"],skinHandler)
 
-T1:Slider("Attack cooldown",0,5,5,function(value)
-      _G.cda = tonumber(value)
-end)
-
 T1:Toggle("Auto attack",false,function(value)
    _G.Attack = value
-    while wait(_G.cda) do
+    while wait(1.5) do
       if _G.Attack == false then break end
       game:GetService("ReplicatedStorage")["Events"]["AttackEvent"]:FireServer()
     end
