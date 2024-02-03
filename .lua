@@ -18,6 +18,34 @@ local stats = T5:Label("Error label")
 lib:AddTable(game:GetService("ReplicatedStorage")["AnimalsSkin"],skinHandler)
 lib:AddTable(client["Consumables"],itms)
 
+local function animalESP(tag)
+       for i,v in pairs(workspace:GetDescendants()) do
+          if v:FindFirstChild("TAG ESP") or v.Name == "TAG ESP" then
+             v:Destroy()
+          end
+      end
+   
+        local BillboardGui = Instance.new('BillboardGui')
+        local TextLabel = Instance.new('TextLabel')
+        
+        BillboardGui.Parent = tag
+        BillboardGui.AlwaysOnTop = true
+        BillboardGui.Size = UDim2.new(0, 50, 0, 50)
+        BillboardGui.StudsOffset = Vector3.new(0,2,0)
+        BillboardGui.Enabled = false
+	     BillboardGui.Name = "TAG ESP"
+	
+        TextLabel.Parent = BillboardGui
+        TextLabel.BackgroundColor3 = Color3.new(1,1,1)
+        TextLabel.BackgroundTransparency = 1
+        TextLabel.Size = UDim2.new(1, 0, 1, 0)
+        TextLabel.Text = "<font color='rgb(255,255,0)'>" .. tag .. "</font>"
+        TextLabel.TextColor3 = Color3.new(1,1,0)
+        TextLabel.TextScaled = false
+	     TextLabel.RichText = true
+        TextLabel.Name = "UI 1"
+end
+
 local function cESP(str)
    for i,v in pairs(workspace:GetDescendants()) do
       if v:FindFirstChild("ANIMAL XRAY") or v.Name == "ANIMAL XRAY" then
@@ -66,6 +94,7 @@ T6:Dropdown("Select animal",animals,function(value)
           if v:IsA("Model") and v.Name ~= "Model" and v.Name:find(" ") then
             if v.Name == value then
                cESP(v)
+               animalESP(v)
             end
           end
       end
@@ -79,6 +108,14 @@ T6:Toggle("Enable XRAY",false,function(value)
                cESP(v)
             end
           end
+      end
+end)
+
+T6:Toggle("Enable animal tag",false,function(value)
+      for i,v in pairs(workspace:GetDescendants()) do
+          if v:FindFirstChild("TAG ESP") or v.Name == "TAG ESP" then
+            v.Enabled = value
+         end
       end
 end)
 
