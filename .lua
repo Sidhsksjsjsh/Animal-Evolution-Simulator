@@ -111,7 +111,7 @@ T6:Toggle("Enable XRAY",false,function(value)
       end
 end)
 
-T6:Toggle("Enable animal tag",false,function(value)
+T6:Toggle("Enable animal tag [ DISABLED ]",false,function(value)
       for i,v in pairs(workspace:GetDescendants()) do
           if v:FindFirstChild("TAG ESP") or v.Name == "TAG ESP" then
             v.Enabled = value
@@ -164,9 +164,7 @@ T1:Toggle("Auto rebirth",false,function(value)
    _G.rbrts = value
     while wait() do
       if _G.rbrts == false then break end
-         if tonumber(getRebirth()) == 0 then
-            game:GetService("ReplicatedStorage")["Events"]["RebirthEvent"]:FireServer()
-         end
+         game:GetService("ReplicatedStorage")["Events"]["RebirthEvent"]:FireServer()
     end
 end)
 
