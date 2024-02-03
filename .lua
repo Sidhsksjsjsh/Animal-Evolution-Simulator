@@ -168,6 +168,10 @@ T1:Toggle("Auto rebirth",false,function(value)
     end
 end)
 
+T1:Button("Infinite EvoCoins",function()
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoCoins",math.huge)
+end)
+
 --[[T1:Button("Instant collect apples",function()
       lib:FireTouch(workspace["Apple"]["HumanoidRootPart"])
 end)
