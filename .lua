@@ -9,7 +9,7 @@ local T5 = wndw:Tab("Leaderstats")
 local workspace = game:GetService("Workspace")
 local client = game.Players.LocalPlayer
 local skinHandler = {}
-
+local stats = T5:Label("Error label")
 lib:AddTable(game:GetService("ReplicatedStorage")["AnimalsSkin"],skinHandler)
 --[[
 Players.Rivanda_Cheater.leaderstats.Rebirth
@@ -111,5 +111,5 @@ T4:Button("Change animal",function()
 end)
 
 while wait() do
-   T5:Label("[ Your leaderstats ]\nLevel: " .. getLevel() .. "\nGolden Rebirth: " .. getGoldRebirth() .. "\nRebirth: " .. getRebirth() .. "\NXP: " .. getXP())
+   stats:EditLabel("[ Your leaderstats ]\nLevel: " .. getLevel() .. "\nGolden Rebirth: " .. getGoldRebirth() .. "\nRebirth: " .. getRebirth() .. "\NXP: " .. getXP())
 end
