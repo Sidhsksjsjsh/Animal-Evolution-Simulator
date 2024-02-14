@@ -222,6 +222,10 @@ T4:Button("Change animal",function()
    game:GetService("ReplicatedStorage")["Events"]["ChangeRaceEvent"]:FireServer(_G.animaltype)
 end)
 
+lib:WarnUser('[ Turtle Client Debugging ]\n:9019: attempt to index nil with "RuntimeDebugging"')
+
+task.spawn(function()
 while wait() do
    stats:EditLabel("[ Your leaderstats ]\nLevel: " .. getLevel() .. "\nGolden Rebirth: " .. getGoldRebirth() .. "\nRebirth: " .. getRebirth() .. "\nXP: " .. getXP())
 end
+end)
