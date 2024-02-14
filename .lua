@@ -77,6 +77,16 @@ local function getGoldRebirth()
    return client["leaderstats"]["G Rebirth"]["Value"]
 end
 
+local function UserWarning(str,params)
+	lib:WarnUser(str,{
+		AutoClose = params[1],
+		CanClick = params[2],
+		Duration = params[3]
+	})
+end
+
+--UserWarning("",{false,true,10})
+
 local function getRebirth()
    return client["leaderstats"]["Rebirth"]["Value"]
 end
@@ -178,11 +188,11 @@ T7:Button("Give EvoGems",function()
 end)
 
 T1:Button("Ranged kill",function()
-   lib:WarnUser("dont be lazy, lil nigga")
+   UserWarning("dont be lazy, lil nigga",{true,false,10})
 end)
 
 T1:Button("Infinite damage",function()
-   lib:WarnUser("Bro think i will make this feature?💀\n nah i wont\ngo rebirth and hard work nigga")
+   UserWarning("Bro think i will make this feature?💀\n nah i wont\ngo rebirth and hard work nigga",{true,false,10})
 end)
 
 --[[T1:Button("Instant collect apples",function()
