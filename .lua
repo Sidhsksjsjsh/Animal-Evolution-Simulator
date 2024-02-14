@@ -4,6 +4,7 @@ local T1 = wndw:Tab("Main")
 local T2 = wndw:Tab("Upgrade")
 local T3 = wndw:Tab("Chest & Item")
 local T4 = wndw:Tab("Animal Changer")
+local T7 = wndw:Tab("Server Manipulator")
 local T6 = wndw:Tab("Animal ESP")
 local T5 = wndw:Tab("Leaderstats - FIXED")
 
@@ -168,8 +169,12 @@ T1:Toggle("Auto rebirth",false,function(value)
     end
 end)
 
-T1:Button("Infinite EvoCoins",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoCoins",9e9 * 9e9)
+T7:Button("EvoCoins Giver",function()
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoCoins",9e9)
+end)
+
+T7:Button("EvoGems Giver",function()
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoGems",9e9)
 end)
 
 T1:Button("Ranged kill",function()
