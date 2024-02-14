@@ -169,12 +169,12 @@ T1:Toggle("Auto rebirth",false,function(value)
     end
 end)
 
-T7:Button("EvoCoins Giver",function()
+T7:Button("Give EvoCoins",function()
    game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoCoins",9e9)
 end)
 
-T7:Button("EvoGems Giver",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoGems",9e9)
+T7:Button("Give EvoGems",function()
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoGem",9e9)
 end)
 
 T1:Button("Ranged kill",function()
