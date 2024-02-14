@@ -174,7 +174,10 @@ T7:Button("Give EvoCoins",function()
 end)
 
 T7:Button("Give EvoGems",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoGem",9e9)
+   --game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoGem",9e9)
+   lib:WarnUser('[ Vanguard Bypasser ]\nVanguard is trying to bypass the currency... its taking longer\n[ Dont close this notify ]')
+   wait(30)
+   lib:WarnUser('[ Vanguard Bypasser ]\nFailed to bypass this currency, the string is nil\nError code : V-898-a8b1-901d-0pq')
 end)
 
 T1:Button("Ranged kill",function()
@@ -222,7 +225,7 @@ T4:Button("Change animal",function()
    game:GetService("ReplicatedStorage")["Events"]["ChangeRaceEvent"]:FireServer(_G.animaltype)
 end)
 
-lib:WarnUser('[ Turtle Client Debugging ]\n:9019: attempt to index nil with "RuntimeDebugging"')
+--lib:WarnUser('[ Turtle Client Debugging ]\n:9019: attempt to index nil with "RuntimeDebugging"')
 
 task.spawn(function()
 while wait() do
