@@ -184,7 +184,7 @@ T7:Button("Give EvoCoins",function()
 end)
 
 T7:Button("Give EvoGems",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoGems",9e9)
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("evoGems",9e9)
 end)
 
 T1:Button("Ranged kill",function()
