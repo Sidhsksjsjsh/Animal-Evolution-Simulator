@@ -5,6 +5,7 @@ local T2 = wndw:Tab("Upgrade")
 local T3 = wndw:Tab("Chest & Item")
 local T4 = wndw:Tab("Animal Changer")
 local T7 = wndw:Tab("Server Manipulator")
+local T8 = wndw:Tab("Custom Change Stats")
 local T6 = wndw:Tab("Animal ESP")
 local T5 = wndw:Tab("Leaderstats - FIXED")
 local amount ={
@@ -87,6 +88,10 @@ local function UserWarning(str,params)
 		CanClick = params[2],
 		Duration = params[3]
 	})
+end
+
+local function ChangeStats(str,array)
+	game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer(str,tonumber(array))
 end
 
 --UserWarning("",{false,true,10})
@@ -184,11 +189,11 @@ T1:Toggle("Auto rebirth",false,function(value)
 end)
 
 T7:Button("EvoCoins config",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoCoins",9e9)
+   ChangeStats("EvoCoins",9e9)
 end)
 
 T7:Button("EvoGems config",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("evoGems",amount.gem)
+   ChangeStats("evoGems",amount.gem)
 end)
 
 T1:Button("Ranged kill",function()
@@ -196,7 +201,7 @@ T1:Button("Ranged kill",function()
 end)
 
 T7:Button("Damage config",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("DmgLevel",180000000000)
+   ChangeStats("DmgLevel",180000000000)
 end)
 
 T7:Toggle("Auto increase level",false,function(value)
@@ -204,15 +209,40 @@ T7:Toggle("Auto increase level",false,function(value)
 	while wait() do
 		if _G.lvconf == false then break end
 			amount.lv = amount.lv + 9e10
-			game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("Lv",amount.lv)
+			ChangeStats("Lv",amount.lv)
 	end
 end)
 
---[[T1:Button("Instant collect apples",function()
-      lib:FireTouch(workspace["Apple"]["HumanoidRootPart"])
+T8:Dropdown("Select stats ( Testing only )",{"Damage","Evo Coins","Evo Gems","Level","Gold rebirths","Rebirths","XP","Health"},function(value)
+	_G.custype = value
 end)
 
-]]
+T8:Textbox("Enter number value ( EXPERIMENT )",false,function(value)
+	_G.cuschange = tonumber(value)
+end)
+
+T8:Button("Custom config",function()
+	if _G.custype == "Damage" then
+		ChangeStats("DmgLevel",_G.cuschange)
+	elseif _G.custype == "Evo Coins" then
+		ChangeStats("EvoCoins",_G.cuschange)
+	elseif _G.custype == "Evo Gems" then
+		ChangeStats("evoGems",_G.cuschange)
+	elseif _G.custype == "Level" then
+		ChangeStats("Lv",_G.cuschange)
+	elseif _G.custype == "Gold rebirths" then
+		ChangeStats("gRebirth",_G.cuschange)
+		ChangeStats("Grebirth",_G.cuschange)
+		ChangeStats("GRebirth",_G.cuschange)
+	elseif _G.custype == "Rebirths" then
+		ChangeStats("rebirthLevel",_G.cuschange)
+		ChangeStats("RebirthLv",_G.cuschange)
+	elseif _G.custype == "XP" then
+		ChangeStats("xp",_G.cuschange)
+	elseif _G.custype == "Health" then
+		ChangeStats("Health",_G.cuschange)
+	end
+end)
 
 T2:Dropdown("Select upgraded",{"DmgLevel","HpLevel","CritDmgLevel","CritRateLevel"},function(value)
       _G.upgtype = value
