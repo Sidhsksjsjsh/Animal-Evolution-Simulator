@@ -192,7 +192,7 @@ T1:Button("Ranged kill",function()
 end)
 
 T7:Button("Damage config",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("DmgLevel",9e20)
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("DmgLevel",180000000000)
 end)
 
 T7:Button("Level config",function()
