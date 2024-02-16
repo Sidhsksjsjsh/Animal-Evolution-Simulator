@@ -7,6 +7,10 @@ local T4 = wndw:Tab("Animal Changer")
 local T7 = wndw:Tab("Server Manipulator")
 local T6 = wndw:Tab("Animal ESP")
 local T5 = wndw:Tab("Leaderstats - FIXED")
+local amount ={
+	lv = 9e10,
+	gem = 8000000000
+}
 
 local workspace = game:GetService("Workspace")
 local client = game.Players.LocalPlayer
@@ -184,7 +188,7 @@ T7:Button("EvoCoins config",function()
 end)
 
 T7:Button("EvoGems config",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("evoGems",9e9)
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("evoGems",amount.gem)
 end)
 
 T1:Button("Ranged kill",function()
@@ -195,8 +199,13 @@ T7:Button("Damage config",function()
    game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("DmgLevel",180000000000)
 end)
 
-T7:Button("Level config",function()
-   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("Lv",9e10)
+T7:Toggle("Auto increase level",false,function(value)
+   _G.lvconf = value
+	while wait() do
+		if _G.lvconf == false then break end
+			amount.lv = amount.lv + 9e10
+			game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("Lv",amount.lv)
+	end
 end)
 
 --[[T1:Button("Instant collect apples",function()
