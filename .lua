@@ -179,11 +179,11 @@ T1:Toggle("Auto rebirth",false,function(value)
     end
 end)
 
-T7:Button("Give EvoCoins",function()
+T7:Button("EvoCoins config",function()
    game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("EvoCoins",9e9)
 end)
 
-T7:Button("Give EvoGems",function()
+T7:Button("EvoGems config",function()
    game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("evoGems",9e9)
 end)
 
@@ -191,8 +191,12 @@ T1:Button("Ranged kill",function()
    UserWarning("dont be lazy, lil nigga",{true,false,10})
 end)
 
-T1:Button("Infinite damage",function()
-   UserWarning("Bro think i will make this feature?💀\n nah i wont\ngo rebirth and hard work nigga",{true,false,10})
+T7:Button("Damage config",function()
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("DmgLevel",9e20)
+end)
+
+T7:Button("Level config",function()
+   game:GetService("ReplicatedStorage")["Events"]["UpdateStatEvent"]:FireServer("Lv",9e10)
 end)
 
 --[[T1:Button("Instant collect apples",function()
